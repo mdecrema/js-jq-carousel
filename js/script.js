@@ -8,11 +8,13 @@ $(document).ready(function() {
   var counter = 0;
 
 
+
   right.click(nextImage);
   left.click(prevImage);
 
 // Funzione di slider immagine verso destra
   function nextImage() {
+    setTimeout(function() {
     var img = $("img.active");
     img.removeClass("active");
     var punto = $("i.active");
@@ -33,11 +35,14 @@ $(document).ready(function() {
   // Una volta individuato l'elemento corretto gli aggiungo la classe 'active' in modo da renderlo visibile
   imgNext.addClass("active");
   puntoNext.addClass("active");
+
+}, 200);
   };
 
 // // Funzione di slider immagine verso sinistra
 // Stesso cosa della freccina destra però col ragionamento inverso
   function prevImage() {
+    setTimeout(function() {
     var img = $("img.active");
     img.removeClass("active");
     var punto = $("i.active");
@@ -52,6 +57,7 @@ $(document).ready(function() {
   }
   imgNext.addClass("active");
   puntoNext.addClass("active");
+}, 2000);
   };
 
   // Evento sulle freccine della tastiera
@@ -69,62 +75,29 @@ $(document).ready(function() {
         }
     });
 
+  var pall = $("i.active");
   var pall1 = $("i.first");
-  var pall4 = $("i.last");
   var pall2 = pall1.next();
   var pall3 = pall4.prev();
-
-  var img1 = $("img.first");
-  var img2 = img1.next();
-  var img3 = img4.prev();
-  var img4 = $("img.last");
+  var pall4 = $("i.last");
+  var img = $("img.first");
+  var img2 = imgFirst.next();
+  var img3 = imgLast.prev();
+  var lastImg = $("img.last");
 
   pall1.click(cliccato1);
-  pall2.click(cliccato2);
-  pall3.click(cliccato3);
-  pall4.click(cliccato4);
+  pall2.click(cliccato);
+  pall3.click(cliccato);
+  pall4.click(cliccato);
 
   function cliccato1() {
-    pall1.addClass("active");
-    pall2.removeClass("active");
-    pall3.removeClass("active");
-    pall4.removeClass("active");
-    img1.addClass("active");
+    var pallNext = pall;
+    pallNext.addClass("active");
+    var nextImg = img;
+    nextImg.addClass("active");
     img2.removeClass("active");
     img3.removeClass("active");
-    img4.removeClass("active");
-  };
-
-  function cliccato2() {
-    pall1.removeClass("active");
-    pall2.addClass("active");
-    pall3.removeClass("active");
-    pall4.removeClass("active");
-    img1.removeClass("active");
-    img2.addClass("active");
-    img3.removeClass("active");
-    img4.removeClass("active");
-  };
-
-  function cliccato3() {
-    pall1.removeClass("active");
-    pall2.removeClass("active");
-    pall3.addClass("active");
-    pall4.removeClass("active");
-    img1.removeClass("active");
-    img2.removeClass("active");
-    img3.addClass("active");
-    img4.removeClass("active");
-  };
-  function cliccato4() {
-    pall1.removeClass("active");
-    pall2.removeClass("active");
-    pall3.removeClass("active");
-    pall4.addClass("active");
-    img1.removeClass("active");
-    img2.removeClass("active");
-    img3.removeClass("active");
-    img4.addClass("active");
+    lastImg.removeClass("active");
   };
 
 });
