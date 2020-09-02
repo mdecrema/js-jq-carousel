@@ -6,8 +6,13 @@ $(document).ready(function() {
   var imgFirst = $(".first");
   var imgLast = $(".last");
   var counter = 0;
-// Evento click sulla freccina destra del carousel
-  right.click(function() {
+
+
+  right.click(nextImage);
+  left.click(prevImage);
+
+// Funzione di slider immagine verso destra
+  function nextImage() {
     var img = $("img.active");
     img.removeClass("active");
     var punto = $("i.active");
@@ -28,11 +33,11 @@ $(document).ready(function() {
   // Una volta individuato l'elemento corretto gli aggiungo la classe 'active' in modo da renderlo visibile
   imgNext.addClass("active");
   puntoNext.addClass("active");
-  });
+  };
 
-// Evento click sulla freccina sinistra del carousel
+// // Funzione di slider immagine verso sinistra
 // Stesso cosa della freccina destra però col ragionamento inverso
-  left.click(function() {
+  function prevImage() {
     var img = $("img.active");
     img.removeClass("active");
     var punto = $("i.active");
@@ -47,6 +52,21 @@ $(document).ready(function() {
   }
   imgNext.addClass("active");
   puntoNext.addClass("active");
-  });
+  };
+
+  // Evento sulle freccine della tastiera
+  $(document).keydown(function(event) {
+        console.log(event.keyCode);
+        // Se clicco la freccina destra allora richiamo la funzione 'nextImage'
+        if (event.which == 37)
+        {
+            prevImage();
+        }
+        // Se clicco la freccina sinistra allora richiamo la funzione 'prevImages'
+        else if (event.which == 39)
+        {
+            nextImage();
+        }
+    });
 
 });
