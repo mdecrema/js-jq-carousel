@@ -1,6 +1,6 @@
 // Tutte le funzioni verranno eseguite una volta completato il caricamento della pagina
 $(document).ready(function() {
-  // Definisco alcune variabili 
+  // Definisco alcune variabili
   var left = $(".prev");
   var right = $(".next");
   var imgFirst = $(".first");
@@ -10,7 +10,6 @@ $(document).ready(function() {
 // Evento click sulla freccina destra del carousel
   right.click(function() {
     if (counter == 0) {
-    imgLast.removeClass("active");
     imgFirst.removeClass("active");
     imgFirst.next().addClass("active");
     counter = 1;
@@ -21,7 +20,32 @@ $(document).ready(function() {
   } else if ( counter == 2) {
     imgLast.prev().removeClass("active");
     imgLast.addClass("active");
+    counter = 3;
+  } else if ( counter == 3){
+    imgLast.removeClass("active");
+    imgFirst.addClass("active");
     counter = 0;
   }
   });
+
+left.click(function() {
+  if (counter == 0) {
+  imgLast.addClass("active");
+  imgFirst.removeClass("active");
+  counter = 3;
+} else if ( counter == 3) {
+    imgLast.prev().addClass("active");
+    imgLast.removeClass("active");
+    counter = 2;
+} else if ( counter == 2) {
+  imgLast.prev().removeClass("active");
+  imgFirst.next().addClass("active");
+  counter = 1;
+} else if ( counter == 1) {
+  imgFirst.next().removeClass("active");
+  imgFirst.addClass("active");
+}
+});
+
+
 });
