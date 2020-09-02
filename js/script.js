@@ -19,5 +19,15 @@ $(document).ready(function() {
   imgNext.addClass("active");
   });
 
+  left.click(function() {
+    var img = $("img.active");
+    img.removeClass("active");
+    if (img.hasClass("first")) {
+    var imgNext = imgLast;
+  } else {
+    var imgNext = img.prev();
+  }
+  imgNext.addClass("active");
+  });
 
 });
