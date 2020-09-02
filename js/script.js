@@ -69,4 +69,62 @@ $(document).ready(function() {
         }
     });
 
+  var pall1 = $("i.first");
+  var pall4 = $("i.last");
+  var pall2 = pall1.next();
+  var pall3 = pall4.prev();
+
+  var img1 = $("img.first");
+  var img2 = img1.next();
+  var img3 = img4.prev();
+  var img4 = $("img.last");
+
+  pall1.click(cliccato1);
+  pall2.click(cliccato2);
+  pall3.click(cliccato3);
+  pall4.click(cliccato4);
+
+  function cliccato1() {
+    pall1.addClass("active");
+    pall2.removeClass("active");
+    pall3.removeClass("active");
+    pall4.removeClass("active");
+    img1.addClass("active");
+    img2.removeClass("active");
+    img3.removeClass("active");
+    img4.removeClass("active");
+  };
+
+  function cliccato2() {
+    pall1.removeClass("active");
+    pall2.addClass("active");
+    pall3.removeClass("active");
+    pall4.removeClass("active");
+    img1.removeClass("active");
+    img2.addClass("active");
+    img3.removeClass("active");
+    img4.removeClass("active");
+  };
+
+  function cliccato3() {
+    pall1.removeClass("active");
+    pall2.removeClass("active");
+    pall3.addClass("active");
+    pall4.removeClass("active");
+    img1.removeClass("active");
+    img2.removeClass("active");
+    img3.addClass("active");
+    img4.removeClass("active");
+  };
+  function cliccato4() {
+    pall1.removeClass("active");
+    pall2.removeClass("active");
+    pall3.removeClass("active");
+    pall4.addClass("active");
+    img1.removeClass("active");
+    img2.removeClass("active");
+    img3.removeClass("active");
+    img4.addClass("active");
+  };
+
 });
