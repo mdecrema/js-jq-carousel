@@ -75,29 +75,17 @@ $(document).ready(function() {
         }
     });
 
-  var pall = $("i.active");
-  var pall1 = $("i.first");
-  var pall2 = pall1.next();
-  var pall3 = pall4.prev();
-  var pall4 = $("i.last");
-  var img = $("img.first");
-  var img2 = imgFirst.next();
-  var img3 = imgLast.prev();
-  var lastImg = $("img.last");
+  // Al click del pallino richiamo la funzione 'cliccato'
+  $(".nav i").click(cliccato);
 
-  pall1.click(cliccato1);
-  pall2.click(cliccato);
-  pall3.click(cliccato);
-  pall4.click(cliccato);
-
-  function cliccato1() {
-    var pallNext = pall;
-    pallNext.addClass("active");
-    var nextImg = img;
-    nextImg.addClass("active");
-    img2.removeClass("active");
-    img3.removeClass("active");
-    lastImg.removeClass("active");
+  // Funzione che mostra l'immagine corrispondente al pallino cliccato
+  function cliccato() {
+    var pallinoIndex = $(this).index();
+    $("img").removeClass("active");
+    var indexImg = pallinoIndex + 1;
+    $("img:nth-child("+indexImg+")").addClass("active");
+    $(".nav i").removeClass("active");
+    $(this).addClass("active");
   };
 
 });
